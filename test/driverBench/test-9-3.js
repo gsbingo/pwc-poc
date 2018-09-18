@@ -68,7 +68,7 @@ function average(arr) {
 }
 
 function loadGridFs() {
-  this.bin = loadSpecFile(['single_and_multi_document', 'gridfs_5m.bin']);
+  this.bin = loadSpecFile(['single_and_multi_document', 'gridfs_5m.bin']);      //change the file gridfs_5m.bin/gridfs_50m.bin
   //console.log("%%%%%%%%single bin");
   //console.log(this.bin);
 }
@@ -83,7 +83,7 @@ function writeSingleByteToUploadStream() {
   });
 }
 
-const benchmarkRunner = new Runner({minExecutionCount : 100})
+const benchmarkRunner = new Runner({minExecutionCount : 100})     //set the executionCount to 100
   .suite('multiBench', suite =>
     suite
       .benchmark('gridFsUpload', benchmark =>

@@ -19,7 +19,7 @@ function loadSpecString(filePath) {
 }
 
 function makeClient() {
-  this.client = new MongoClient('mongodb://pwcuser:password@localhost:40000/?readPreference=nearest');
+  this.client = new MongoClient('mongodb://pwcuser:password@localhost:40000/?readPreference=nearest&retryWrites=true');
 }
 
 function connectClient() {
