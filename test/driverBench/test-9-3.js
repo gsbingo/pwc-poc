@@ -68,7 +68,7 @@ function average(arr) {
 }
 
 function loadGridFs() {
-  this.bin = loadSpecFile(['single_and_multi_document', 'gridfs_50m.bin']);
+  this.bin = loadSpecFile(['single_and_multi_document', 'gridfs_5m.bin']);
   //console.log("%%%%%%%%single bin");
   //console.log(this.bin);
 }

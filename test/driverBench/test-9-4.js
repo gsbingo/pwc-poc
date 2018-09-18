@@ -68,12 +68,17 @@ function downloadFile(bucket, path) {
 
 function loadMulGridFs() {      //Change the array size to set how many files for upload/download
 
-  this.files = Array.apply(null, Array(1000)).map((v, i) => {      
+  this.files = Array.apply(null, Array(100)).map((v, i) => {      
         return `./spec/single_and_multi_document/gridfs_5m.bin`;
      })
 }
 
-const benchmarkRunner = new Runner({minExecutionCount : 1})
+async function timer(){ 
+    console.log("     wait for 500s for uploading finishment");
+    await new Promise(done => setTimeout(done, 500000));
+}
+
+const benchmarkRunner = new Runner({minExecutionCount : 1})     //set the executionCount to 1
   .suite('parallelBench', suite =>
     suite
       .benchmark('paraGridFsDownload', benchmark =>
@@ -110,6 +115,7 @@ const benchmarkRunner = new Runner({minExecutionCount : 1})
                   console.dir(err)
                    })
           })
+          .setup(timer)     //set the timer to make sure the uploading are completed and replicated to secondary nodes.
           .task(function(done) {      //concurrent query grid.fs
                 console.log('     begin to query files');
                 return Promise.map(
